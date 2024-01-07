@@ -1,0 +1,6 @@
+// Syntax >> CharName: Dialogue Text: Expression: Choice1: Choice2
+// If one of them is nothing to have just type null.
+// and use doubleslash as comment.
+// Example
+Player: Hi, I love you!: Shy: null: null
+Girl1: Yes! I love you too!: Excited: null: null
