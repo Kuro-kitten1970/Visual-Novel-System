@@ -2,8 +2,9 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using TMPro;
+using System;
 
-public class NewBehaviourScript : MonoBehaviour
+public class DialogueSystem : MonoBehaviour
 {
     [Header("Dialogue Boxes")]
     [SerializeField] private GameObject dialogueBox;
@@ -16,22 +17,16 @@ public class NewBehaviourScript : MonoBehaviour
     [SerializeField] private TMP_Text _choice1;
     [SerializeField] private TMP_Text _choice2;
 
-    [Header("Database")]
-    public TextAsset _textAsset;
-    List<TextDatabase> textDatabases;
-    string[] getData;
-
     [Header("Properties")]
     [SerializeField, Range(0.1f, 1f)] float _textSpeed;
 
     SceneController sceneController;
+    DataReader dataReader;
 
     private void Awake()
     {
-        textDatabases = new List<TextDatabase>();
-        getData = _textAsset.text.Split('\n');
-        ParseText(getData);
         sceneController = gameObject.GetComponent<SceneController>();
+        dataReader = gameObject.GetComponent<DataReader>();
     }
 
     private void Start()
@@ -41,10 +36,10 @@ public class NewBehaviourScript : MonoBehaviour
 
     public void DisplayDialogue()
     {
-        StartCoroutine(PlayDialogue(textDatabases));
+        StartCoroutine(PlayDialogue(dataReader.dataStruct));
     }
 
-    private IEnumerator PlayDialogue(List<TextDatabase> values)
+    private IEnumerator PlayDialogue(List<DataStruct> values)
     {
         for (int i = 0; i < values.Count; i++)
         {
@@ -62,26 +57,7 @@ public class NewBehaviourScript : MonoBehaviour
         }
 
         dialogueBox.SetActive(false);
-        textDatabases.Clear();
+        dataReader.dataStruct.Clear();
         sceneController.NextScene();
-    }
-
-    public void ParseText(string[] lines)
-    {
-        foreach (string line in lines)
-        {
-            if (line == "" || line == null) continue;
-            if (line.StartsWith("//")) continue;
-
-            string[] extractLine = line.Split(':');
-            string CharName = extractLine[0].TrimStart();
-            string Dialogue = extractLine[1].TrimStart();
-            string Expression = extractLine[2].TrimStart();
-            string Choice1 = extractLine[3].TrimStart();
-            string Choice2 = extractLine[4].TrimStart();
-
-            TextDatabase database = new TextDatabase(CharName, Dialogue, Expression, Choice1, Choice2);
-            textDatabases.Add(database);
-        }
     }
 }

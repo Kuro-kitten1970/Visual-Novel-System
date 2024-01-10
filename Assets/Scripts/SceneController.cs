@@ -8,6 +8,6 @@ public class SceneController : MonoBehaviour
 
     public void NextScene()
     {
-        SceneManager.LoadScene(_nextScene.name);
+        SceneManager.LoadScene(_nextScene.name, LoadSceneMode.Single);
     }
 }

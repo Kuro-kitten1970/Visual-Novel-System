@@ -727,6 +727,7 @@ GameObject:
   - component: {fileID: 1585118439}
   - component: {fileID: 1585118438}
   - component: {fileID: 1585118437}
+  - component: {fileID: 1585118441}
   m_Layer: 0
   m_Name: ScriptsController
   m_TagString: Untagged
@@ -766,7 +767,6 @@ MonoBehaviour:
   _dialogue: {fileID: 17033911}
   _choice1: {fileID: 0}
   _choice2: {fileID: 0}
-  _textAsset: {fileID: 4900000, guid: af9c5ec9041193b4784e11c0136f102e, type: 3}
   _textSpeed: 0.15
 --- !u!222 &1585118439
 CanvasRenderer:
@@ -795,6 +795,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1585118441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585118436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31efeaee600e09b46a072359ab3d2771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textAsset: {fileID: 4900000, guid: af9c5ec9041193b4784e11c0136f102e, type: 3}
+  dataStruct: []
 --- !u!1 &1756035473
 GameObject:
   m_ObjectHideFlags: 0
